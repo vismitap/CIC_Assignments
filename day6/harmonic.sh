@@ -1,24 +1,10 @@
-function div() {
-  local _d=${3:-8}
-  local _n=0000000000
-  _n=${_n:0:$_d}
-  local _r=$(($1$_n/$2))
-  _r=${_r:0:-$_d}.${_r: -$_d}
-  echo $_r
-}
+read -p "Enter the num : " num
+harmonic=0
 
-n=$1
-for(( i=1; i<=$n; i++ )) 
-do
-	#ans=`awk "BEGIN {printf \"%.2f\n\", (1/$i)}"`
-	#ans=`awk "BEGIN {print(1/$i)}"`
-	#echo $ans	
-        #((ans+=$(div 1 $i)));
-	ans=$(div 1 $i);	
-	echo $ans;
-
+for((i=1;i<=$num;i++))
+do 
+	ans=`awk "BEGIN {print (1/$i)}"`
+	harmonic=`awk "BEGIN {print ($harmonic+$ans)}"`
+	#echo $ans
 done
-
-#seq 1 $n | awk '{sum+=(1/$1)} END{print sum}'
-
-
+echo "The harmonic number for range (1 to $num) is: " $harmonic
